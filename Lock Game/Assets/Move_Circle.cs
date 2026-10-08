@@ -1,9 +1,14 @@
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Move_Circle : MonoBehaviour
 {
+    public bool load = true;
+    
+
+
     private int side = 1;
     private bool flip = true;
     public Transform middle;
