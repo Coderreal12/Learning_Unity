@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Square_Roate : MonoBehaviour
 {
-    
+    //Variables
     public bool up = true;
 
     public bool rotation = true;
@@ -13,6 +13,11 @@ public class Square_Roate : MonoBehaviour
     public float negspeed;
 
     public float posspeed;
+
+    //Scripts
+    public Rotate rotate;
+
+
 
     private void Start()
     {
@@ -27,6 +32,10 @@ public class Square_Roate : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        rotation = rotate.flip; 
+
+
+
         if (rotation)
         {
            speed = posspeed; 
