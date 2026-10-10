@@ -1,8 +1,11 @@
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Rotate : MonoBehaviour
 {
+    string[] hitbox = { "Right", };
     private string tag;
     public bool flip = true;
     public int Direction = 0;
@@ -10,27 +13,40 @@ public class Rotate : MonoBehaviour
     public string tg;
     public Transform Player;
 
+    public bool input;
+
     //Scripts
     public Square_Roate direction;
 
+    public Collsion_Score tru;
     public void Update()
     {
         
         //Getting a positive or negitive value for each keyboard press
-        flop(ref flip);
+        flop(ref flip, input);
         Convert(ref Direction, flip);
 
   
        
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
+       
+        //ANY hitbox
+        
+ tag = collision.tag;
+        if (collision.tag != "Coin")
+        {
+                input = false;
+        }
         
 
-        tg = collision.tag;
-
-        switch(tg)
+       
+        switch(tag)
         {
+            
+
+           
             case "Right":
                
                 if (flip == true)
@@ -86,23 +102,26 @@ public class Rotate : MonoBehaviour
                     direction.up = false;
                 }
                break;
+            default:
+                break;
+           
 
         }
 
-        
-        
+}
 
 
-
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        input = true;
     }
 
 
 
-
     //functions
-    public static void  flop(ref bool flip)
+    public static void flop(ref bool flip, bool input)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && input == true)
         {
  flip = !flip;
         }

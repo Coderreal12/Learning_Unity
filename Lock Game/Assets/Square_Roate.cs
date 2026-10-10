@@ -21,6 +21,7 @@ public class Square_Roate : MonoBehaviour
 
     private void Start()
     {
+        //setting up variables for game
         up = true;
 
         negspeed = speed * -1;
@@ -35,7 +36,7 @@ public class Square_Roate : MonoBehaviour
         rotation = rotate.flip; 
 
 
-
+        //storing the speeds speed / negitive speed
         if (rotation)
         {
            speed = posspeed; 
@@ -50,7 +51,7 @@ speed = negspeed;
 
 
 
-        
+        //Choosing the direciton of which it goes in 
         if (up)
         {
             transform.localPosition += new Vector3(1 * speed, 0, 0);
