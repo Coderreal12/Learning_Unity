@@ -9,6 +9,7 @@ TagManager:
   - Down
   - Left
   - Up
+  - Blocker
   layers:
   - Default
   - TransparentFX

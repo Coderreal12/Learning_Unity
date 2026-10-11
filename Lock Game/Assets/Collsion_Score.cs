@@ -12,6 +12,7 @@ public class Collsion_Score : MonoBehaviour
  public bool check;
     public string collider;
 
+    public Collsion_Score newcheck;
  public void Awake()
     {
         check = false;
@@ -19,19 +20,7 @@ public class Collsion_Score : MonoBehaviour
         dest = Instantiate(coin);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Coin"))
-        {
-            check = true;
-            
-        }
-    }
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        check = false;
-    }
-
+  
 
 
 
@@ -48,14 +37,14 @@ public class Collsion_Score : MonoBehaviour
 
     public void Update()
     {
-       Debug.Log(check);
+        check = newcheck.check;
        if (check == true && Input.GetKeyDown(KeyCode.Space))
         {
             
  score++;
             Destroy(dest.gameObject);
             dest = Instantiate(coin);
-            check = false;
+            check = newcheck.check;
         }
 
             

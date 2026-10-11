@@ -15,10 +15,12 @@ public class Rotate : MonoBehaviour
 
     public bool input;
 
+    private bool count;
     //Scripts
     public Square_Roate direction;
 
     public Collsion_Score tru;
+    private float time = 0;
     public void Update()
     {
         
@@ -26,7 +28,10 @@ public class Rotate : MonoBehaviour
         flop(ref flip, input);
         Convert(ref Direction, flip);
 
-  
+        //IF it touches in the same frame then null flip;
+        
+
+       
        
     }
     public void OnTriggerEnter2D(Collider2D collision)
@@ -35,15 +40,14 @@ public class Rotate : MonoBehaviour
         //ANY hitbox
         
  tag = collision.tag;
-        if (collision.tag != "Coin")
-        {
-                input = false;
-        }
+
+        
         
 
        
         switch(tag)
         {
+
             
 
            
@@ -104,20 +108,17 @@ public class Rotate : MonoBehaviour
                break;
             default:
                 break;
-           
+                
 
         }
 
 }
 
 
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        input = true;
-    }
+   
 
 
-
+   
     //functions
     public static void flop(ref bool flip, bool input)
     {
