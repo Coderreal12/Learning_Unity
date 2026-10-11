@@ -1,20 +1,24 @@
 
 using TMPro;
 using UnityEngine;
-
 public class Collsion_Score : MonoBehaviour
 {
     public int score = 0;
     public GameObject dest;
     public GameObject coin;
-
+    public Square_Roate ro;
 
  public bool check;
     public string collider;
 
     public Collsion_Score newcheck;
+
+    public GameObject death;
+    
  public void Awake()
     {
+        death.SetActive(false);
+
         check = false;
         //Saying what to destroy
         dest = Instantiate(coin);
@@ -23,7 +27,7 @@ public class Collsion_Score : MonoBehaviour
   
 
 
-
+    
 
 
 
@@ -45,6 +49,13 @@ public class Collsion_Score : MonoBehaviour
             Destroy(dest.gameObject);
             dest = Instantiate(coin);
             check = newcheck.check;
+        }
+       else if (check == false && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("I am dead");
+            death.SetActive(true);
+            ro.negspeed = 0;
+            ro.posspeed = 0;
         }
 
             
